@@ -1,0 +1,13 @@
+PS C:\hyper\chem-redox> python scripts\make_narration_myvoice.py
+[tts] Qwen/Qwen3-TTS-12Hz-1.7B-Base / bfloat16 / {'temperature': 0.3, 'subtalker_temperature': 0.3, 'top_k': 20}
+[tts] ref=myvoice02_clean.wav  세그먼트 22개 중 22개 생성
+  [4/22] 98s  (남은 예상 8.3분)
+  [8/22] 80s  (남은 예상 5.5분)
+  [12/22] 89s  (남은 예상 3.9분)
+  [16/22] 103s  (남은 예상 2.4분)
+  [20/22] 70s  (남은 예상 0.8분)
+  [22/22] 65s  (남은 예상 0.0분)
+...
+name, memory.total [MiB]
+NVIDIA GeForce RTX 2070, 8192 MiB
+(생성 중 VRAM 5.4GB 사용, 렌더와 병렬 금지)

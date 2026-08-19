@@ -1,0 +1,55 @@
+@page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Pretendard", "Malgun Gothic", "맑은 고딕", "Noto Sans KR", sans-serif;
+  font-size: 10.5pt; line-height: 1.6; color: #1b2233; background: #fff;
+}
+/* 표지 */
+.cover { height: 255mm; display: flex; flex-direction: column; justify-content: center; page-break-after: always;
+  border-left: 10px solid #0b1026; padding-left: 14mm; }
+.cover-kicker { font-size: 12pt; letter-spacing: .12em; color: #3b4a6b; margin-bottom: 10mm; }
+.cover-title { font-size: 30pt; line-height: 1.25; font-weight: 900; letter-spacing: -0.02em; color: #0b1026; margin: 0 0 6mm 0; }
+.cover-sub { font-size: 17pt; font-weight: 700; color: #0f8f84; margin-bottom: 3mm; }
+.cover-sub2 { font-size: 12pt; color: #3b4a6b; margin-bottom: 14mm; }
+.cover-tags span { display: inline-block; border: 1.5px solid #0b1026; border-radius: 999px; padding: 2px 12px; margin: 0 6px 6px 0; font-size: 10pt; }
+.cover-author { margin-top: 18mm; font-size: 12pt; font-weight: 700; }
+.cover-repo { font-size: 10pt; color: #3b4a6b; margin-top: 2mm; font-family: Consolas, monospace; }
+/* 차례 */
+.toc { page-break-after: always; }
+.toc ol { font-size: 12pt; line-height: 2; padding-left: 0; list-style: none; }
+.toc a { color: #0b1026; text-decoration: none; }
+.toc-note { margin-top: 10mm; padding: 4mm 5mm; background: #f3f5fa; border-radius: 6px; font-size: 10pt; }
+/* 본문 */
+.chapter { page-break-before: always; }
+h1 { font-size: 20pt; font-weight: 900; letter-spacing: -0.02em; color: #0b1026; border-bottom: 3px solid #0b1026; padding-bottom: 2mm; margin: 0 0 5mm 0; }
+h2 { font-size: 14pt; font-weight: 800; color: #0b1026; margin: 8mm 0 3mm; padding-left: 3mm; border-left: 5px solid #0f8f84; page-break-after: avoid; }
+h3 { font-size: 11.5pt; font-weight: 700; margin: 5mm 0 2mm; color: #24304d; page-break-after: avoid; }
+p { margin: 0 0 2.5mm 0; }
+ul, ol { margin: 0 0 3mm 0; padding-left: 1.6em; }
+li { margin-bottom: 1mm; }
+blockquote { margin: 3mm 0; padding: 3mm 4mm; background: #eef8f7; border-left: 4px solid #0f8f84; border-radius: 4px; color: #1b2233; }
+blockquote p { margin: 0; }
+code { font-family: Consolas, "JetBrains Mono", monospace; font-size: 9.5pt; background: #f0f2f7; padding: 1px 4px; border-radius: 3px; }
+pre { font-family: Consolas, "JetBrains Mono", monospace; font-size: 9pt; line-height: 1.5; background: #f0f2f7; border: 1px solid #d5dae6; border-radius: 6px;
+  padding: 3mm 4mm; white-space: pre-wrap; word-break: break-all; margin: 2mm 0 3.5mm; page-break-inside: avoid; }
+pre code { background: none; padding: 0; font-size: 9pt; }
+table { border-collapse: collapse; width: 100%; margin: 2mm 0 4mm; font-size: 9.5pt; page-break-inside: auto; }
+th, td { border: 1px solid #cfd5e3; padding: 1.6mm 2.4mm; vertical-align: top; text-align: left; }
+th { background: #e9edf6; font-weight: 700; }
+tr { page-break-inside: avoid; }
+figure { margin: 3mm 0 4mm; text-align: center; page-break-inside: avoid; }
+figure img { max-width: 100%; max-height: 120mm; border: 1px solid #d5dae6; border-radius: 4px; }
+figcaption { font-size: 9pt; color: #3b4a6b; margin-top: 1.5mm; }
+.term { margin: 2mm 0 4mm; page-break-inside: avoid; }
+.term-cap { font-size: 9pt; color: #3b4a6b; margin-bottom: 1mm; }
+.term pre { background: #0b1026; color: #dfe6f5; border-color: #0b1026; }
+.qr { text-align: center; margin: 4mm 0; }
+.qr img { width: 34mm; height: 34mm; }
+.qr div { font-size: 9pt; font-family: Consolas, monospace; color: #3b4a6b; }
+.qr-pending { display: inline-block; width: 40mm; height: 40mm; border: 2px dashed #9aa5bf; border-radius: 6px; color: #6a7591; font-size: 9pt;
+  display: flex; align-items: center; justify-content: center; text-align: center; }
+.missing { color: #b00; font-size: 9pt; }
+hr { border: none; border-top: 1px solid #cfd5e3; margin: 5mm 0; }
+a { color: #0f6f86; word-break: break-all; }
+strong { color: #0b1026; }

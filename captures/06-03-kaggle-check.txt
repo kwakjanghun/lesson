@@ -1,0 +1,18 @@
+PS C:\ai\kaggle_tts> python ~/.claude/skills/kaggle-tts/scripts/check.py
+Kaggle 로그인이 안 되어 있습니다. 터미널에서 직접 실행하세요 (브라우저가 열림 → Approve → 코드 붙여넣기):
+
+    kaggle auth login
+
+(토큰 방식을 쓰려면 https://www.kaggle.com/settings/api 에서 발급 → ~/.kaggle/access_token 에 저장)
+[kaggle-tts] kaggle CLI      : OK
+[kaggle-tts] 로그인          : 안 됨
+[kaggle-tts] GPU 할당량      : (조회 실패)
+[kaggle-tts] 레퍼런스 데이터셋: -
+[kaggle-tts] ref_text        : OK
+[kaggle-tts] 설정 파일       : C:\ai\kaggle_tts\config.json
+
+⚠ Kaggle 커널에서 인터넷(pip/모델 다운로드)을 쓰려면 **휴대폰 인증**이 필수입니다.
+   에러 로그에는 'Temporary failure in name resolution' / 'Network is unreachable' 처럼만 뜨고 원인을 말해주지 않습니다.
+   https://www.kaggle.com/settings  →  Phone Verification  →  인증됨(Verified) 확인.
+
+[kaggle-tts] NOT READY — 위 항목 중 빠진 것을 채우세요

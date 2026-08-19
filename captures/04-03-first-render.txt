@@ -1,0 +1,9 @@
+PS C:\hyper\demo-hf\kit> npx hyperframes render -o test.mp4
+[INFO] [Render:trace] {"renderJobId":"96601435-2fcc-460c-b78a-da2ef8ea778e","phase":"assemble","status":"start","elapsedMs":19741,"stagePhase":"capturing","hasAudio":false,"workerCount":5,"forceScreenshot":false,"totalFrames":360,"framesCompleted":360,"captureMode":"beginframe","captureOperation":"encode"}
+  ██████████████████████░░░  90%  Assembling final video
+[INFO] [Render:trace] {"renderJobId":"96601435-2fcc-460c-b78a-da2ef8ea778e","phase":"assemble","status":"end","elapsedMs":19847,"durationMs":106,"stagePhase":"capturing","hasAudio":false,"workerCount":5,"forceScreenshot":false,"totalFrames":360,"framesCompleted":360,"captureMode":"beginframe","captureOperation":"encode"}
+[INFO] [Render:trace] {"renderJobId":"96601435-2fcc-460c-b78a-da2ef8ea778e","phase":"pipeline","status":"checkpoint","elapsedMs":19863,"message":"artifact validated","totalElapsedMs":19852}
+  █████████████████████████  100%  Render complete
+
+◇  C:\hyper\demo-hf\kit\test.mp4
+   2.3 MB · 12.0s video · rendered in 19.9s
