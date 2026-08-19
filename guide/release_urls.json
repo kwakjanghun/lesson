@@ -1,0 +1,8 @@
+{
+ "release": "https://github.com/kwakjanghun/lesson/releases/tag/v1.0",
+ "assets": {
+  "chem-redox_v2_myvoice.mp4": "https://github.com/kwakjanghun/lesson/releases/download/v1.0/chem-redox_v2_myvoice.mp4",
+  "chem-redox_v1_edgetts.mp4": "https://github.com/kwakjanghun/lesson/releases/download/v1.0/chem-redox_v1_edgetts.mp4",
+  "chem-redox_intro.mp4": "https://github.com/kwakjanghun/lesson/releases/download/v1.0/chem-redox_intro.mp4"
+ }
+}
