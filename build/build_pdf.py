@@ -19,6 +19,8 @@ ap.add_argument("--repo", default="")
 ap.add_argument("--video", default="")
 ap.add_argument("--out", default="draft.pdf")
 ap.add_argument("--no-pdf", action="store_true")
+ap.add_argument("--style", default="")
+ap.add_argument("--only", type=int, default=0, help="앞 N개 장만 (목업용)")
 args = ap.parse_args()
 
 TITLE = "클로드 코드 × HyperFrames로 수업 영상 자동 제작하기"
@@ -79,9 +81,38 @@ def preprocess(md, base):
     md = re.sub(r'!\[([^\]]*)\]\(([^)]+\.(?:png|jpg|jpeg))\)', img_sub, md)
     return md
 
+FONT_URI = "data:font/woff2;base64," + base64.b64encode(open(os.path.join(ROOT,"kit","assets","fonts","PretendardVariable.woff2"),"rb").read()).decode()
+
+def postprocess(body):
+    # 코드 블록 분류: PS 창 / 채팅 말풍선 / 실행 결과 / 중립 코드
+    def pre_sub(m):
+        inner = m.group(1); raw = H.unescape(re.sub(r"<[^>]+>", "", inner))
+        if "PS>" in raw or raw.lstrip().startswith("$ "):
+            kind = "ps"; label = "Windows PowerShell"
+        elif any(k in raw for k in ["[watch]", "[tts]", "[kaggle-tts]", "◇", "█", "TOTAL", "made s", "Check", "Render", "Lint", "Installed", "mean_volume", "s01 ", "✓", "rendered in", "Capturing"]):
+            kind = "out"; label = "실행 결과"
+        elif '("s0' in raw or raw.lstrip().startswith(("{", "[", "<", "node ", "v2")) or "\n" not in raw.strip() and len(raw) < 40:
+            kind = "code"; label = ""
+        else:
+            kind = "chat"; label = "클로드 코드 채팅창에 붙여넣기"
+        if kind == "ps":
+            return f'<div class="ps"><div class="bar"><i></i><i></i><i></i><span>{label}</span></div><pre>{inner}</pre></div>'
+        if kind == "out":
+            return f'<div class="out"><div class="bar"><span>{label}</span></div><pre>{inner}</pre></div>'
+        if kind == "chat":
+            return f'<div class="chat"><div class="who"><b>C</b><span>{label}</span><em>복사 → 붙여넣기 → Enter</em></div><pre>{inner}</pre></div>'
+        return f'<pre class="code">{inner}</pre>'
+    body = re.sub(r"<pre><code>(.*?)</code></pre>", pre_sub, body, flags=re.S)
+    # 성공 콜아웃
+    body = re.sub(r"<p><strong>이 화면이 나오면 성공</strong>", '<p class="ok"><strong>이 화면이 나오면 성공</strong>', body)
+    # 인용 종류
+    body = re.sub(r"<blockquote>\s*<p>(⚠|💡)", lambda m: f'<blockquote class="{ "warn" if m.group(1)=="⚠" else "tip" }"><p>{m.group(1)}', body)
+    body = re.sub(r"<blockquote>\s*<p><strong>목표</strong>", '<blockquote class="goal"><p><strong>목표</strong>', body)
+    return body
+
 parts = []
 toc = []
-for i, (fn, title) in enumerate(CHAPTERS):
+for i, (fn, title) in enumerate(CHAPTERS[:args.only] if args.only else CHAPTERS):
     path = os.path.join(MS, fn)
     if not os.path.exists(path):
         print("missing", fn); continue
@@ -91,36 +122,70 @@ for i, (fn, title) in enumerate(CHAPTERS):
     body = body.replace("<!--QR-->", QR_HTML)
     # 각 장의 첫 h1에 id 부여
     anchor = f"ch{i}"
-    body = re.sub(r"<h1>", f'<h1 id="{anchor}">', body, count=1)
+    def h1sub(m):
+        t = m.group(1); num, _, rest = t.partition(". ")
+        if not rest or not num[:1].isdigit(): num, rest = "", t
+        title, _, lead = rest.partition(" — ")
+        lead_html = f'<div class="ch-lead">{lead}</div>' if lead else ""
+        num_html = f'<div class="ch-num">{num}</div>' if num else ""
+        return f'<div class="ch-open">{num_html}<h1 id="{anchor}">{title}</h1>{lead_html}</div>'
+    body = re.sub(r"<h1[^>]*>(.*?)</h1>", h1sub, body, count=1)
+    body = postprocess(body)
     parts.append(f'<section class="chapter" id="sec-{anchor}">{body}</section>')
-    toc.append(f'<li><a href="#{anchor}">{H.escape(title)}</a></li>')
+    num, _, rest = title.partition(". ")
+    if not rest: num, rest = "", title
+    toc.append(f'<li><a href="#{anchor}"><span class="n">{H.escape(num)}</span><span class="t">{H.escape(rest)}</span></a></li>')
 
-CSS = open(os.path.join(ROOT, "build", "style.css"), encoding="utf-8").read()
+CSS = open(os.path.join(ROOT, "build", f"style-{args.style}.css" if args.style else "style.css"), encoding="utf-8").read()
+CSS = '@font-face{font-family:"Pretendard";src:url(' + FONT_URI + ') format("woff2-variations");font-weight:45 920;}' + chr(10) + CSS
+HERO = data_uri(os.path.join(ROOT, "captures", "05-07-still-title.png"))
+HERO2 = data_uri(os.path.join(ROOT, "captures", "05-07-still-metal.png"))
 cover = f"""
 <section class="cover">
-  <div class="cover-kicker">AI 디지털 도구 나눔 자료</div>
-  <h1 class="cover-title">{H.escape(TITLE)}</h1>
-  <div class="cover-sub">{H.escape(SUB)}</div>
-  <div class="cover-sub2">{H.escape(SUB2)}</div>
-  <div class="cover-tags"><span>클로드 코드</span><span>watch · 보기</span><span>HyperFrames · 만들기</span><span>Qwen3-TTS · 말하기</span></div>
-  <div class="cover-author">{H.escape(AUTHOR)}</div>
-  <div class="cover-repo">{H.escape(REPO_TXT)}</div>
+  <div class="cv-top">
+    <div class="cv-kicker"><span>AI 디지털 도구 나눔 자료</span><span>2026 · 숭신고등학교</span></div>
+    <h1 class="cv-title">클로드 코드 <span class="x">×</span> HyperFrames로<br/>수업 영상 <em>자동 제작</em>하기</h1>
+    <div class="cv-sub">내 목소리 나레이션까지</div>
+    <p class="cv-desc">{H.escape(SUB2)}. PDF 수업 자료 한 장을 넣으면, 선생님 목소리로 설명하는 6분짜리 모션그래픽 수업 영상이 나옵니다. 편집 프로그램도 코딩도 비용도 없이 — 복사·붙여넣기로.</p>
+  </div>
+  <div class="cv-hero"><img src="{HERO}" alt=""/><div class="cv-hero-cap">예시 결과물 · 통합과학2 「화학 변화 ① 산화와 환원」 6분 · 내 목소리</div></div>
+  <div class="cv-flow">
+    <div class="st"><b>01</b><span>PDF 한 장</span></div><i>→</i>
+    <div class="st"><b>02</b><span>클로드가 대본·장면</span></div><i>→</i>
+    <div class="st"><b>03</b><span>HyperFrames 렌더</span></div><i>→</i>
+    <div class="st"><b>04</b><span>내 목소리 12초</span></div>
+  </div>
+  <div class="cv-foot">
+    <div class="cv-verbs"><span><b>보기</b> watch</span><span><b>만들기</b> HyperFrames</span><span><b>말하기</b> Qwen3-TTS</span></div>
+    <div class="cv-author">{H.escape(AUTHOR)}<br/><small>{H.escape(REPO_TXT)}</small></div>
+  </div>
 </section>
 <section class="toc">
-  <h1>차례</h1>
+  <div class="toc-head"><div class="toc-kicker">CONTENTS</div><h1>차례</h1></div>
   <ol>{''.join(toc)}</ol>
-  <p class="toc-note">회색 상자는 복사해서 붙여넣는 것입니다. <code>PS&gt;</code> 는 PowerShell, 말풍선은 클로드 코드 채팅창. 캡처 아래 "이 화면이 나오면 성공"까지 확인하고 다음으로 갑니다.</p>
+  <div class="toc-side"><img src="{HERO2}" alt=""/></div>
+  <p class="toc-note"><b>읽는 법</b> — 검은 창(Windows PowerShell)은 파워셸에, 말풍선(C)은 클로드 코드 채팅창에 붙여넣습니다. 초록 체크 "이 화면이 나오면 성공"까지 확인하고 다음으로. 막히면 7장.</p>
 </section>
 """
+toc_html = cover[cover.index('<section class="toc">'):]
+cover_only = cover[:cover.index('<section class="toc">')]
 html_doc = f"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"/>
 <title>{H.escape(TITLE)}</title>
 <style>{CSS}</style>
 </head><body>
-{cover}
+{toc_html}
 {''.join(parts)}
 </body></html>"""
-html_path = os.path.join(OUT, "guide.html")
+cover_doc = f"""<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"/><title>cover</title>
+<style>{CSS}
+@page {{ size: A4; margin: 0; }}
+.cover {{ margin: 0 !important; height: 297mm !important; width: 210mm !important; page-break-after: auto !important; }}
+</style></head><body>{cover_only}</body></html>"""
+cover_path = os.path.join(OUT, f"cover{'-'+args.style if args.style else ''}.html")
+open(cover_path, "w", encoding="utf-8").write(cover_doc)
+html_path = os.path.join(OUT, f"guide{'-'+args.style if args.style else ''}.html")
 open(html_path, "w", encoding="utf-8").write(html_doc)
 print("html:", html_path, f"{os.path.getsize(html_path)/1e6:.1f} MB")
 
@@ -132,7 +197,13 @@ pdf_path = os.path.join(OUT, args.out)
 cmd = [EDGE, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
        "--run-all-compositor-stages-before-draw", "--virtual-time-budget=20000",
        f"--print-to-pdf={pdf_path}", "file:///" + html_path.replace("\\", "/")]
+body_pdf = pdf_path + ".body.pdf"; cover_pdf = pdf_path + ".cover.pdf"
+cmd[-2] = f"--print-to-pdf={body_pdf}"
 subprocess.run(cmd, check=True, capture_output=True)
+cmd2 = list(cmd); cmd2[-2] = f"--print-to-pdf={cover_pdf}"; cmd2[-1] = "file:///" + cover_path.replace("\\", "/")
+subprocess.run(cmd2, check=True, capture_output=True)
 import fitz
+d = fitz.open(cover_pdf); d2 = fitz.open(body_pdf); d.insert_pdf(d2); d.save(pdf_path); d.close(); d2.close()
+os.remove(body_pdf); os.remove(cover_pdf)
 d = fitz.open(pdf_path)
 print("pdf:", pdf_path, "pages:", len(d), f"{os.path.getsize(pdf_path)/1e6:.1f} MB")

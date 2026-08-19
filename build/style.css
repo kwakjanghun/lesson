@@ -1,55 +1,109 @@
-@page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+/* ===== D. 에디토리얼 — 종이·남색·주홍 한 점. 여백과 위계로 말한다 ===== */
+:root { --paper:#f7f4ee; --ink:#1c2238; --ink-strong:#0f1526; --muted:#6b7086; --rule:#e3e0d8; --rule2:#c9c5ba;
+  --accent:#e4572e; --ok:#1f8a70; --warn-bg:#fff6d6; --warn-line:#e8c44a; --tip-bg:#eef6f4; --goal-bg:#f7f4ee; --code-bg:#f1efe9; }
+@page { size: A4; margin: 17mm 16mm 19mm 16mm; }
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body {
-  font-family: "Pretendard", "Malgun Gothic", "맑은 고딕", "Noto Sans KR", sans-serif;
-  font-size: 10.5pt; line-height: 1.6; color: #1b2233; background: #fff;
-}
-/* 표지 */
-.cover { height: 255mm; display: flex; flex-direction: column; justify-content: center; page-break-after: always;
-  border-left: 10px solid #0b1026; padding-left: 14mm; }
-.cover-kicker { font-size: 12pt; letter-spacing: .12em; color: #3b4a6b; margin-bottom: 10mm; }
-.cover-title { font-size: 30pt; line-height: 1.25; font-weight: 900; letter-spacing: -0.02em; color: #0b1026; margin: 0 0 6mm 0; }
-.cover-sub { font-size: 17pt; font-weight: 700; color: #0f8f84; margin-bottom: 3mm; }
-.cover-sub2 { font-size: 12pt; color: #3b4a6b; margin-bottom: 14mm; }
-.cover-tags span { display: inline-block; border: 1.5px solid #0b1026; border-radius: 999px; padding: 2px 12px; margin: 0 6px 6px 0; font-size: 10pt; }
-.cover-author { margin-top: 18mm; font-size: 12pt; font-weight: 700; }
-.cover-repo { font-size: 10pt; color: #3b4a6b; margin-top: 2mm; font-family: Consolas, monospace; }
-/* 차례 */
-.toc { page-break-after: always; }
-.toc ol { font-size: 12pt; line-height: 2; padding-left: 0; list-style: none; }
-.toc a { color: #0b1026; text-decoration: none; }
-.toc-note { margin-top: 10mm; padding: 4mm 5mm; background: #f3f5fa; border-radius: 6px; font-size: 10pt; }
-/* 본문 */
+html, body { margin:0; padding:0; }
+body { font-family: "Pretendard", "Malgun Gothic", sans-serif; font-size: 10.4pt; line-height: 1.68; color: var(--ink); background:#fff; font-feature-settings: "ss05"; letter-spacing: -0.005em; }
+p { margin: 0 0 2.8mm; }
+ul, ol { margin: 0 0 3mm; padding-left: 1.45em; }
+li { margin-bottom: 1.2mm; }
+li::marker { color: var(--accent); font-weight: 700; }
+a { color: var(--ink-strong); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 2px; word-break: break-all; }
+strong { color: var(--ink-strong); font-weight: 800; }
+hr { border:none; border-top: 1px solid var(--rule2); margin: 7mm 0; }
+code { font-family: Consolas, "JetBrains Mono", monospace; font-size: 9.2pt; background: var(--code-bg); padding: 1px 5px; border-radius: 3px; color: var(--ink-strong); }
+
+/* ---------- 표지 ---------- */
+.cover { width: 210mm; height: 297mm; background: var(--paper); color: var(--ink-strong); padding: 22mm 20mm 18mm; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.cover::before { content:""; position:absolute; left:20mm; right:20mm; top: 17mm; height: 2px; background: var(--ink-strong); }
+.cv-kicker { display:flex; justify-content:space-between; font-size: 8.6pt; letter-spacing: .22em; font-weight: 700; color: var(--muted); margin-bottom: 13mm; }
+.cv-title { font-size: 37pt; font-weight: 900; line-height: 1.14; letter-spacing: -0.045em; margin: 0 0 5mm; }
+.cv-title .x { font-weight: 300; color: var(--accent); margin: 0 1mm; }
+.cv-title em { font-style: normal; color: var(--accent); }
+.cv-sub { font-size: 17pt; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 5mm; }
+.cv-sub::before { content:""; display:inline-block; width: 9mm; height: 3px; background: var(--accent); vertical-align: middle; margin-right: 3mm; }
+.cv-desc { font-size: 10.4pt; line-height: 1.7; color: var(--ink); max-width: 128mm; margin: 0; }
+.cv-hero { margin: 11mm 0 0; position: relative; }
+.cv-hero img { width: 100%; display:block; border-radius: 3px; box-shadow: 0 18px 40px rgba(15,21,38,.28); }
+.cv-hero-cap { margin-top: 2.5mm; font-size: 8.6pt; color: var(--muted); letter-spacing: .02em; }
+.cv-flow { display:flex; align-items:center; gap: 2.5mm; margin-top: 9mm; }
+.cv-flow .st { flex:1; border-top: 1.5px solid var(--ink-strong); padding-top: 2.2mm; }
+.cv-flow .st b { display:block; font-size: 8.5pt; letter-spacing: .18em; color: var(--accent); }
+.cv-flow .st span { font-size: 10pt; font-weight: 700; }
+.cv-flow i { font-style: normal; color: var(--muted); font-size: 12pt; margin-top: 2mm; }
+.cv-foot { margin-top: auto; display:flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--rule2); padding-top: 5mm; }
+.cv-verbs span { display:inline-block; margin-right: 5mm; font-size: 9.5pt; color: var(--muted); }
+.cv-verbs b { color: var(--ink-strong); font-weight: 900; font-size: 11pt; margin-right: 1mm; }
+.cv-author { text-align: right; font-size: 10.5pt; font-weight: 800; line-height: 1.5; }
+.cv-author small { font-weight: 400; font-size: 8.6pt; color: var(--muted); font-family: Consolas, monospace; }
+
+/* ---------- 차례 ---------- */
+.toc { page-break-after: always; position: relative; min-height: 255mm; }
+.toc-kicker { font-size: 8.6pt; letter-spacing: .3em; color: var(--accent); font-weight: 800; }
+.toc-head h1 { font-size: 30pt; font-weight: 900; letter-spacing: -0.04em; margin: 0 0 9mm; }
+.toc ol { list-style:none; padding:0; margin:0; width: 60%; }
+.toc li { border-top: 1px solid var(--rule2); padding: 3.2mm 0; }
+.toc li:last-child { border-bottom: 1px solid var(--rule2); }
+.toc li a { display:flex; gap: 5mm; align-items: baseline; text-decoration: none; color: var(--ink-strong); font-size: 12pt; font-weight: 700; }
+.toc li .n { font-size: 16pt; font-weight: 900; color: var(--accent); min-width: 9mm; letter-spacing: -0.03em; }
+.toc-side { position:absolute; right: 0; top: 26mm; width: 34%; }
+.toc-side img { width:100%; border-radius: 3px; box-shadow: 0 10px 26px rgba(15,21,38,.22); transform: rotate(2.5deg); }
+.toc-note { margin-top: 12mm; width: 60%; font-size: 9.6pt; line-height: 1.7; padding: 4mm 0 0; border-top: 2px solid var(--ink-strong); }
+
+/* ---------- 장 시작 ---------- */
 .chapter { page-break-before: always; }
-h1 { font-size: 20pt; font-weight: 900; letter-spacing: -0.02em; color: #0b1026; border-bottom: 3px solid #0b1026; padding-bottom: 2mm; margin: 0 0 5mm 0; }
-h2 { font-size: 14pt; font-weight: 800; color: #0b1026; margin: 8mm 0 3mm; padding-left: 3mm; border-left: 5px solid #0f8f84; page-break-after: avoid; }
-h3 { font-size: 11.5pt; font-weight: 700; margin: 5mm 0 2mm; color: #24304d; page-break-after: avoid; }
-p { margin: 0 0 2.5mm 0; }
-ul, ol { margin: 0 0 3mm 0; padding-left: 1.6em; }
-li { margin-bottom: 1mm; }
-blockquote { margin: 3mm 0; padding: 3mm 4mm; background: #eef8f7; border-left: 4px solid #0f8f84; border-radius: 4px; color: #1b2233; }
-blockquote p { margin: 0; }
-code { font-family: Consolas, "JetBrains Mono", monospace; font-size: 9.5pt; background: #f0f2f7; padding: 1px 4px; border-radius: 3px; }
-pre { font-family: Consolas, "JetBrains Mono", monospace; font-size: 9pt; line-height: 1.5; background: #f0f2f7; border: 1px solid #d5dae6; border-radius: 6px;
-  padding: 3mm 4mm; white-space: pre-wrap; word-break: break-all; margin: 2mm 0 3.5mm; page-break-inside: avoid; }
-pre code { background: none; padding: 0; font-size: 9pt; }
-table { border-collapse: collapse; width: 100%; margin: 2mm 0 4mm; font-size: 9.5pt; page-break-inside: auto; }
-th, td { border: 1px solid #cfd5e3; padding: 1.6mm 2.4mm; vertical-align: top; text-align: left; }
-th { background: #e9edf6; font-weight: 700; }
+.ch-open { margin: 0 0 9mm; padding-bottom: 5mm; border-bottom: 2px solid var(--ink-strong); page-break-after: avoid; position: relative; }
+.ch-num { font-size: 64pt; font-weight: 900; line-height: .9; letter-spacing: -0.06em; color: var(--accent); margin: 0 0 3mm -1mm; }
+.ch-open h1 { font-size: 24pt; font-weight: 900; letter-spacing: -0.035em; line-height: 1.2; margin: 0; color: var(--ink-strong); }
+.ch-lead { margin-top: 2.5mm; font-size: 11.5pt; color: var(--muted); font-weight: 500; }
+h2 { font-size: 14.5pt; font-weight: 900; letter-spacing: -0.025em; color: var(--ink-strong); margin: 9mm 0 3mm; page-break-after: avoid; display:flex; align-items:baseline; gap: 3mm; }
+h2::before { content:""; width: 3mm; height: 3mm; background: var(--accent); border-radius: 50%; flex: 0 0 auto; position: relative; top: -1px; }
+h3 { font-size: 11.5pt; font-weight: 800; letter-spacing: -0.015em; color: var(--ink-strong); margin: 5.5mm 0 2mm; page-break-after: avoid; }
+
+/* ---------- 구성요소: 파워셸 창 / 채팅 / 결과 / 코드 ---------- */
+.ps, .out, .chat { margin: 2.5mm 0 4.5mm; page-break-inside: avoid; border-radius: 6px; overflow: hidden; }
+.ps .bar { background: #2b2b3a; color: #cfd3e6; font-size: 8.4pt; padding: 1.6mm 3mm; display:flex; align-items:center; gap: 1.6mm; }
+.ps .bar i { width: 2.6mm; height: 2.6mm; border-radius: 50%; background: #ff5f57; display:inline-block; }
+.ps .bar i:nth-child(2) { background: #febc2e; } .ps .bar i:nth-child(3) { background: #28c840; }
+.ps .bar span { margin-left: 2mm; letter-spacing: .02em; }
+.ps pre { margin:0; background: #161622; color: #e8eaf6; font-family: Consolas, "JetBrains Mono", monospace; font-size: 9.3pt; line-height: 1.6; padding: 3.2mm 4mm; white-space: pre-wrap; word-break: break-all; }
+.out .bar { background: #e9e6de; color: var(--muted); font-size: 8.4pt; padding: 1.2mm 3mm; letter-spacing: .04em; }
+.out pre { margin:0; background: #f3f1ea; color: #2a2f45; font-family: Consolas, "JetBrains Mono", monospace; font-size: 8.9pt; line-height: 1.55; padding: 3mm 4mm; white-space: pre-wrap; word-break: break-all; border-left: 3px solid var(--rule2); }
+.chat { border: 1.5px solid var(--ink-strong); border-radius: 12px 12px 12px 2px; background: #fff; }
+.chat .who { display:flex; align-items:center; gap: 2.5mm; padding: 2mm 3.5mm; border-bottom: 1px solid var(--rule); font-size: 8.8pt; color: var(--muted); }
+.chat .who b { width: 5.5mm; height: 5.5mm; border-radius: 50%; background: var(--ink-strong); color:#fff; display:flex; align-items:center; justify-content:center; font-size: 8pt; font-weight: 900; }
+.chat .who span { font-weight: 700; color: var(--ink-strong); }
+.chat .who em { margin-left:auto; font-style: normal; font-size: 8pt; color: var(--accent); font-weight: 700; }
+.chat pre { margin:0; font-family: "Pretendard", sans-serif; font-size: 10pt; line-height: 1.65; padding: 3mm 4mm; white-space: pre-wrap; word-break: break-word; color: var(--ink-strong); }
+pre.code { font-family: Consolas, "JetBrains Mono", monospace; font-size: 9pt; line-height: 1.55; background: var(--code-bg); padding: 3mm 4mm; border-radius: 6px; white-space: pre-wrap; word-break: break-all; margin: 2mm 0 4mm; page-break-inside: avoid; }
+pre.code code { background:none; padding:0; }
+.term { margin: 2.5mm 0 4.5mm; page-break-inside: avoid; }
+.term-cap { font-size: 8.6pt; color: var(--muted); margin-bottom: 1mm; }
+.term pre { margin:0; background: #f3f1ea; color: #2a2f45; font-family: Consolas, "JetBrains Mono", monospace; font-size: 8.9pt; line-height: 1.55; padding: 3mm 4mm; border-left: 3px solid var(--rule2); border-radius: 6px; white-space: pre-wrap; word-break: break-all; }
+
+/* ---------- 콜아웃 ---------- */
+p.ok { background: #e9f5f0; border-left: 3px solid var(--ok); padding: 2.6mm 4mm 2.6mm 10mm; border-radius: 0 6px 6px 0; position: relative; margin: 2mm 0 4.5mm; page-break-inside: avoid; }
+p.ok::before { content:"✓"; position:absolute; left: 3.4mm; top: 2.2mm; color: var(--ok); font-weight: 900; font-size: 12pt; }
+p.ok strong { color: var(--ok); }
+blockquote { margin: 3mm 0 4.5mm; padding: 3mm 4.5mm; background: var(--goal-bg); border-left: 3px solid var(--ink-strong); border-radius: 0 6px 6px 0; page-break-inside: avoid; }
+blockquote p { margin:0; }
+blockquote.warn { background: var(--warn-bg); border-left-color: var(--warn-line); }
+blockquote.tip { background: var(--tip-bg); border-left-color: var(--ok); }
+blockquote.goal { background: var(--paper); border-left-color: var(--accent); }
+
+/* ---------- 표·그림 ---------- */
+table { border-collapse: collapse; width: 100%; margin: 2.5mm 0 5mm; font-size: 9.3pt; line-height: 1.55; }
+th, td { padding: 2mm 2.4mm; vertical-align: top; text-align: left; border-bottom: 1px solid var(--rule); }
+th { font-weight: 800; color: var(--ink-strong); border-bottom: 2px solid var(--ink-strong); background: none; font-size: 9pt; letter-spacing: .02em; }
 tr { page-break-inside: avoid; }
-figure { margin: 3mm 0 4mm; text-align: center; page-break-inside: avoid; }
-figure img { max-width: 100%; max-height: 120mm; border: 1px solid #d5dae6; border-radius: 4px; }
-figcaption { font-size: 9pt; color: #3b4a6b; margin-top: 1.5mm; }
-.term { margin: 2mm 0 4mm; page-break-inside: avoid; }
-.term-cap { font-size: 9pt; color: #3b4a6b; margin-bottom: 1mm; }
-.term pre { background: #0b1026; color: #dfe6f5; border-color: #0b1026; }
-.qr { text-align: center; margin: 4mm 0; }
-.qr img { width: 34mm; height: 34mm; }
-.qr div { font-size: 9pt; font-family: Consolas, monospace; color: #3b4a6b; }
-.qr-pending { display: inline-block; width: 40mm; height: 40mm; border: 2px dashed #9aa5bf; border-radius: 6px; color: #6a7591; font-size: 9pt;
-  display: flex; align-items: center; justify-content: center; text-align: center; }
-.missing { color: #b00; font-size: 9pt; }
-hr { border: none; border-top: 1px solid #cfd5e3; margin: 5mm 0; }
-a { color: #0f6f86; word-break: break-all; }
-strong { color: #0b1026; }
+td:first-child { font-weight: 700; color: var(--ink-strong); }
+figure { margin: 3mm 0 5mm; page-break-inside: avoid; }
+figure img { max-width: 100%; max-height: 116mm; display:block; margin: 0 auto; border-radius: 3px; box-shadow: 0 6px 18px rgba(15,21,38,.16); }
+figcaption { font-size: 8.7pt; color: var(--muted); margin-top: 2mm; text-align: center; }
+figcaption::before { content:"▸ "; color: var(--accent); }
+.qr { display:flex; align-items:center; gap: 5mm; margin: 5mm 0; padding: 4mm; border: 1px solid var(--rule2); border-radius: 8px; width: fit-content; }
+.qr img { width: 26mm; height: 26mm; }
+.qr div { font-size: 9pt; font-family: Consolas, monospace; color: var(--ink-strong); }
+.qr-pending { width: 36mm; height: 36mm; border: 1.5px dashed var(--rule2); border-radius: 8px; display:flex; align-items:center; justify-content:center; color: var(--muted); font-size: 8.8pt; text-align:center; }
+.missing { color:#b00; font-size: 9pt; }
