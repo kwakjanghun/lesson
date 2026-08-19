@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+
+        @font-face {
+          font-family: "Pretendard";
+          src: url("assets/fonts/PretendardVariable.woff2") format("woff2-variations");
+          font-weight: 45 920;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; font-family: "Pretendard", sans-serif; color: #eaf0ff; }
+        #body { position: absolute; inset: 0; }
+        #head { position: absolute; left: 0; right: 0; top: 90px; text-align: center; opacity: 0; will-change: transform; }
+        #head .badge { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 700;
+          color: #0b1026; background: #4ce0d2; border-radius: 999px; padding: 8px 30px; margin-bottom: 18px; }
+        #head .name { display: block; font-size: 68px; font-weight: 900; letter-spacing: -0.03em; }
+        .codebox { position: absolute; left: 120px; top: 300px; width: 1000px; border-radius: 20px;
+          border: 2px solid rgba(143,160,196,0.35); background: rgba(5,7,15,0.65); padding: 40px 0; opacity: 0; will-change: transform; }
+        .cl { display: block; font-family: "JetBrains Mono", monospace; font-size: 33px; line-height: 1.75;
+          color: #eaf0ff; padding: 2px 46px; border-left: 8px solid rgba(0,0,0,0); white-space: pre; }
+        .cl i { font-style: normal; color: #8fa0c4; }
+        .cap { position: absolute; left: 1200px; top: 340px; width: 580px; border-radius: 20px;
+          border: 2px solid rgba(76,224,210,0.5); background: rgba(76,224,210,0.06); padding: 36px 40px;
+          font-size: 40px; font-weight: 700; line-height: 1.5; letter-spacing: -0.02em; opacity: 0; will-change: transform; }
+        .cap b { font-weight: 700; color: #4ce0d2; }
+
+        #big { position:absolute; left:0; right:0; top: 380px; text-align:center; font-size: 96px; font-weight: 900; letter-spacing:-0.04em; line-height:1.2; opacity:0; will-change: transform; }
+        #big em { font-style:normal; color:#4ce0d2; }
+        #sub { position:absolute; left:0; right:0; top: 660px; text-align:center; font-size: 40px; font-weight: 300; color:#8fa0c4; opacity:0; }
+
+      </style>
+
+      <div id="root" data-composition-id="s10" data-width="1920" data-height="1080">
+        <div id="body">
+          <div id="big">산소의 이동, <em>전자의 이동</em><br/>두 눈으로 보는 산화와 환원</div>
+          <div id="sub">다음 시간 — 산과 염기, 그리고 중화 반응 · 수고했어요!</div>
+
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#body", {x:150, opacity:0}, {x:0, opacity:1, duration:0.55, ease:"power3.out"}, 0);
+          tl.fromTo("#big", {opacity:0, y:40}, {opacity:1, y:0, duration:0.8, ease:"power3.out"}, 0.6);
+          tl.fromTo("#sub", {opacity:0, y:24}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 6.5);
+
+          window.__timelines["s10"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

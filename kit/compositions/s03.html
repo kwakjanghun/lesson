@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+
+        @font-face {
+          font-family: "Pretendard";
+          src: url("assets/fonts/PretendardVariable.woff2") format("woff2-variations");
+          font-weight: 45 920;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; font-family: "Pretendard", sans-serif; color: #eaf0ff; }
+        #body { position: absolute; inset: 0; }
+        #head { position: absolute; left: 0; right: 0; top: 90px; text-align: center; opacity: 0; will-change: transform; }
+        #head .badge { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 700;
+          color: #0b1026; background: #d4af37; border-radius: 999px; padding: 8px 30px; margin-bottom: 18px; }
+        #head .name { display: block; font-size: 68px; font-weight: 900; letter-spacing: -0.03em; }
+        .codebox { position: absolute; left: 120px; top: 300px; width: 1000px; border-radius: 20px;
+          border: 2px solid rgba(143,160,196,0.35); background: rgba(5,7,15,0.65); padding: 40px 0; opacity: 0; will-change: transform; }
+        .cl { display: block; font-family: "JetBrains Mono", monospace; font-size: 33px; line-height: 1.75;
+          color: #eaf0ff; padding: 2px 46px; border-left: 8px solid rgba(0,0,0,0); white-space: pre; }
+        .cl i { font-style: normal; color: #8fa0c4; }
+        .cap { position: absolute; left: 1200px; top: 340px; width: 580px; border-radius: 20px;
+          border: 2px solid rgba(212,175,55,0.5); background: rgba(212,175,55,0.06); padding: 36px 40px;
+          font-size: 40px; font-weight: 700; line-height: 1.5; letter-spacing: -0.02em; opacity: 0; will-change: transform; }
+        .cap b { font-weight: 700; color: #d4af37; }
+
+        .card { position:absolute; border-radius: 24px; border: 2px solid rgba(143,160,196,0.3);
+          background: rgba(234,240,255,0.03); padding: 34px 40px; opacity: 0; will-change: transform; }
+        .card h3 { font-size: 46px; font-weight: 900; letter-spacing:-0.03em; margin-bottom: 14px; }
+        .card p { font-size: 34px; font-weight: 300; line-height: 1.5; color:#eaf0ff; }
+        .card .eq { font-family:"JetBrains Mono", monospace; font-size: 34px; font-weight: 700; color:#eaf0ff;
+          margin: 14px 0 10px; white-space: nowrap; }
+        .card .tag { display:inline-block; font-size: 28px; font-weight: 700; border-radius: 999px; padding: 4px 18px; margin-right: 10px; margin-top: 6px; }
+        .ox { color:#0b1026; background:#ff6ec7; }
+        .rd { color:#0b1026; background:#4ce0d2; }
+        .lbl { position:absolute; font-size: 30px; font-weight: 300; color:#8fa0c4; opacity:0; }
+
+        .card { left: 160px; width: 1600px; height: 190px; padding: 26px 40px; }
+        .card h3 { display:inline-block; margin-right: 30px; vertical-align: middle; }
+        .card .eq { display:inline-block; vertical-align: middle; font-size: 30px; margin: 0 24px 0 0; }
+        .card .tags { display:inline-block; vertical-align: middle; }
+        #c0 { top: 300px; } #c1 { top: 520px; } #c2 { top: 740px; }
+
+      </style>
+
+      <div id="root" data-composition-id="s03" data-width="1920" data-height="1080">
+        <div id="body">
+          <div id="head">
+            <span class="badge">역사를 바꾼 반응</span>
+            <span class="name">자연과 인류를 바꾼 산화 환원</span>
+          </div>
+          <div class="card" id="c0"><h3 style="color:#d4af37">① 광합성</h3><span class="eq">물 + 이산화 탄소 → 포도당 + 산소</span><span class="tags"><span class="tag rd">이산화 탄소 환원</span><span class="tag ox">물 산화</span></span><p>엽록체에서 빛 에너지를 이용해 만든다</p></div>
+          <div class="card" id="c1"><h3 style="color:#d4af37">② 화석 연료의 연소</h3><span class="eq">메테인 + 산소 → 이산화 탄소 + 물 + 에너지</span><span class="tags"><span class="tag ox">메테인 산화</span><span class="tag rd">산소 환원</span></span><p>산업과 교통의 에너지 — 인류의 삶이 풍요로워졌다</p></div>
+          <div class="card" id="c2"><h3 style="color:#d4af37">③ 철의 제련</h3><span class="eq">산화 철(Ⅲ) + 일산화 탄소 → 철 + 이산화 탄소</span><span class="tags"><span class="tag rd">산화 철 환원</span><span class="tag ox">일산화 탄소 산화</span></span><p>철광석에서 순수한 철을 얻어 기구·건축물에 이용</p></div>
+
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#body", {x:150, opacity:0}, {x:0, opacity:1, duration:0.55, ease:"power3.out"}, 0);
+          tl.fromTo("#head", {opacity:0, y:30}, {opacity:1, y:0, duration:0.7, ease:"power3.out"}, 0.4);
+          tl.fromTo("#c0", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 1.2);
+          tl.fromTo("#c1", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 22.310000000000002);
+          tl.to("#c0", {opacity:0.6, duration:0.4}, 22.310000000000002);
+          tl.fromTo("#c2", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 43.15);
+          tl.to("#c1", {opacity:0.6, duration:0.4}, 43.15);
+          tl.to("#body", {x:-190, opacity:0, duration:0.45, ease:"power3.in"}, 61.74);
+
+          window.__timelines["s03"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

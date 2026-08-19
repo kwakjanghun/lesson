@@ -1,0 +1,15 @@
+PS C:\hyper\demo-hf> git clone https://github.com/philosophyAIEDU/260731eduhyper.git kit
+
+PS C:\hyper\demo-hf> cd kit; npx hyperframes check
+  ◇ 0 issues across 9 sample(s)
+
+Motion
+  ◇ 0 errors, 0 warnings
+
+Contrast
+  ◇ 13/13 text checks pass WCAG AA
+
+Snapshots
+  ◇ disabled
+
+◇  Check passed

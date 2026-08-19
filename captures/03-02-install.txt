@@ -1,0 +1,50 @@
+PS C:\hyper\demo-watch> npx skills add bradautomates/claude-video --agent claude-code --skill watch -y --copy
+
+│
+●   claude-code_2-1-229_agent  Agent detected — installing non-interactively
+[?25l│
+◇  Source: https://github.com/bradautomates/claude-video.git
+[?25h[?25l│
+◒  Cloning repository…[1G[J◐  Cloning repository…[1G[J◓  Cloning repository…[1G[J◑  Cloning repository…[1G[J◒  Cloning repository…[1G[J◐  Cloning repository…[1G[J◓  Cloning repository…[1G[J◑  Cloning repository…[1G[J◒  Cloning repository….[1G[J◐  Cloning repository….[1G[J◓  Cloning repository….[1G[J◑  Cloning repository….[1G[J◇  Repository cloned
+[?25h[?25l│
+[1G[J◇  Found 1 skill
+[?25h│
+●  Selected 1 skill: watch
+
+│
+◇  Installation Summary ───╮
+│                          │
+│  .\.agents\skills\watch  │
+│    copy → Claude Code    │
+│                          │
+├──────────────────────────╯
+│
+◇  Security Risk Assessments ─────────────────────────────╮
+│                                                         │
+│         Gen               Socket            Snyk        │
+│  watch  Safe              0 alerts          High Risk   │
+│                                                         │
+│  Details: https://skills.sh/bradautomates/claude-video  │
+│                                                         │
+├─────────────────────────────────────────────────────────╯
+[?25l│
+[1G[J◇  Installation complete
+[?25h
+│
+◇  Installed 1 skill ──────────╮
+│                              │
+│  ✓ watch (copied)            │
+│    → .\.claude\skills\watch  │
+│                              │
+├──────────────────────────────╯
+
+│
+└  Done!  Review skills before use; they run with full agent permissions.
+
+
+PS C:\hyper\demo-watch> npx skills list
+Project Skills
+
+watch .\.claude\skills\watch
+  Agents: Claude Code  Source: bradautomates/claude-video
+

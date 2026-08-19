@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+
+        @font-face {
+          font-family: "Pretendard";
+          src: url("assets/fonts/PretendardVariable.woff2") format("woff2-variations");
+          font-weight: 45 920;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; font-family: "Pretendard", sans-serif; color: #eaf0ff; }
+        #body { position: absolute; inset: 0; }
+        #head { position: absolute; left: 0; right: 0; top: 90px; text-align: center; opacity: 0; will-change: transform; }
+        #head .badge { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 700;
+          color: #0b1026; background: #4ce0d2; border-radius: 999px; padding: 8px 30px; margin-bottom: 18px; }
+        #head .name { display: block; font-size: 68px; font-weight: 900; letter-spacing: -0.03em; }
+        .codebox { position: absolute; left: 120px; top: 300px; width: 1000px; border-radius: 20px;
+          border: 2px solid rgba(143,160,196,0.35); background: rgba(5,7,15,0.65); padding: 40px 0; opacity: 0; will-change: transform; }
+        .cl { display: block; font-family: "JetBrains Mono", monospace; font-size: 33px; line-height: 1.75;
+          color: #eaf0ff; padding: 2px 46px; border-left: 8px solid rgba(0,0,0,0); white-space: pre; }
+        .cl i { font-style: normal; color: #8fa0c4; }
+        .cap { position: absolute; left: 1200px; top: 340px; width: 580px; border-radius: 20px;
+          border: 2px solid rgba(76,224,210,0.5); background: rgba(76,224,210,0.06); padding: 36px 40px;
+          font-size: 40px; font-weight: 700; line-height: 1.5; letter-spacing: -0.02em; opacity: 0; will-change: transform; }
+        .cap b { font-weight: 700; color: #4ce0d2; }
+
+        #kicker { position:absolute; left:0; right:0; top: 300px; text-align:center; font-size: 40px; font-weight: 300; color:#8fa0c4; opacity:0; letter-spacing: 0.02em; }
+        #title { position:absolute; left:0; right:0; top: 380px; text-align:center; font-size: 170px; font-weight: 900; letter-spacing:-0.04em; color:#4ce0d2; opacity:0; will-change: transform; }
+        #sub { position:absolute; left:0; right:0; top: 620px; text-align:center; font-size: 52px; font-weight: 700; color:#eaf0ff; opacity:0; }
+        #ring { position:absolute; left: 860px; top: 760px; width: 200px; height: 200px; opacity:0; }
+        #ring svg { width:200px; height:200px; display:block; }
+        #ring .orb { fill:#d4af37; }
+        #ring .el { fill:#ff6ec7; }
+        #ring .path { fill:none; stroke: rgba(143,160,196,0.5); stroke-width: 3; }
+
+      </style>
+
+      <div id="root" data-composition-id="s01" data-width="1920" data-height="1080">
+        <div id="body">
+          <div id="kicker">통합과학 2 · Ⅲ. 변화와 다양성 · 1. 화학 변화</div>
+          <div id="title">산화와 환원</div>
+          <div id="sub">산소의 이동, 그리고 전자의 이동</div>
+          <div id="ring">
+            <svg viewBox="0 0 200 200">
+              <circle class="path" cx="100" cy="100" r="80" />
+              <circle class="orb" cx="100" cy="100" r="26" />
+              <g id="orbit"><circle class="el" cx="180" cy="100" r="11" /></g>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#kicker", {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 0.5);
+          tl.fromTo("#title", {opacity:0, y:50}, {opacity:1, y:0, duration:0.9, ease:"power3.out"}, 1.2);
+          tl.fromTo("#sub", {opacity:0, y:24}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 2.4);
+          tl.fromTo("#ring", {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 3.2);
+          tl.to("#orbit", {rotation: 360 * 4, svgOrigin:"100 100", duration:19.08, ease:"none"}, 0);
+          tl.to("#body", {x:-190, opacity:0, duration:0.45, ease:"power3.in"}, 18.63);
+
+          window.__timelines["s01"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

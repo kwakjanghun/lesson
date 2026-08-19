@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+
+        @font-face {
+          font-family: "Pretendard";
+          src: url("assets/fonts/PretendardVariable.woff2") format("woff2-variations");
+          font-weight: 45 920;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; font-family: "Pretendard", sans-serif; color: #eaf0ff; }
+        #body { position: absolute; inset: 0; }
+        #head { position: absolute; left: 0; right: 0; top: 90px; text-align: center; opacity: 0; will-change: transform; }
+        #head .badge { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 700;
+          color: #0b1026; background: #4ce0d2; border-radius: 999px; padding: 8px 30px; margin-bottom: 18px; }
+        #head .name { display: block; font-size: 68px; font-weight: 900; letter-spacing: -0.03em; }
+        .codebox { position: absolute; left: 120px; top: 300px; width: 1000px; border-radius: 20px;
+          border: 2px solid rgba(143,160,196,0.35); background: rgba(5,7,15,0.65); padding: 40px 0; opacity: 0; will-change: transform; }
+        .cl { display: block; font-family: "JetBrains Mono", monospace; font-size: 33px; line-height: 1.75;
+          color: #eaf0ff; padding: 2px 46px; border-left: 8px solid rgba(0,0,0,0); white-space: pre; }
+        .cl i { font-style: normal; color: #8fa0c4; }
+        .cap { position: absolute; left: 1200px; top: 340px; width: 580px; border-radius: 20px;
+          border: 2px solid rgba(76,224,210,0.5); background: rgba(76,224,210,0.06); padding: 36px 40px;
+          font-size: 40px; font-weight: 700; line-height: 1.5; letter-spacing: -0.02em; opacity: 0; will-change: transform; }
+        .cap b { font-weight: 700; color: #4ce0d2; }
+
+        .card { position:absolute; border-radius: 24px; border: 2px solid rgba(143,160,196,0.3);
+          background: rgba(234,240,255,0.03); padding: 34px 40px; opacity: 0; will-change: transform; }
+        .card h3 { font-size: 46px; font-weight: 900; letter-spacing:-0.03em; margin-bottom: 14px; }
+        .card p { font-size: 34px; font-weight: 300; line-height: 1.5; color:#eaf0ff; }
+        .card .eq { font-family:"JetBrains Mono", monospace; font-size: 34px; font-weight: 700; color:#eaf0ff;
+          margin: 14px 0 10px; white-space: nowrap; }
+        .card .tag { display:inline-block; font-size: 28px; font-weight: 700; border-radius: 999px; padding: 4px 18px; margin-right: 10px; margin-top: 6px; }
+        .ox { color:#0b1026; background:#ff6ec7; }
+        .rd { color:#0b1026; background:#4ce0d2; }
+        .lbl { position:absolute; font-size: 30px; font-weight: 300; color:#8fa0c4; opacity:0; }
+
+        #ox { left: 160px; top: 330px; width: 700px; height: 330px; }
+        #rd { left: 1060px; top: 330px; width: 700px; height: 330px; }
+        #atom { position:absolute; left: 1330px; top: 560px; width: 110px; height: 110px; border-radius: 50%;
+          background:#d4af37; color:#0b1026; font-weight: 900; font-size: 60px; display:flex; align-items:center; justify-content:center; opacity:0; will-change: transform; }
+        #arrow { position:absolute; left: 700px; top: 585px; width: 520px; height: 60px; opacity:0; }
+        #arrow svg { width:520px; height:60px; display:block; }
+        #arrow path { fill:none; stroke:#d4af37; stroke-width:6; stroke-dasharray: 560; stroke-dashoffset: 560; }
+        #arrow polygon { fill:#d4af37; }
+        #sim { position:absolute; left:0; right:0; top: 760px; text-align:center; font-size: 64px; font-weight: 900; letter-spacing:-0.03em; color:#4ce0d2; opacity:0; will-change: transform; }
+        #sim small { display:block; font-size: 34px; font-weight: 300; color:#8fa0c4; margin-top: 14px; letter-spacing: 0; }
+
+      </style>
+
+      <div id="root" data-composition-id="s02" data-width="1920" data-height="1080">
+        <div id="body">
+          <div id="head">
+            <span class="badge">산소의 이동</span>
+            <span class="name">산화와 환원이란?</span>
+          </div>
+          <div class="card" id="ox"><h3 style="color:#ff6ec7">산화 <span style="font-weight:300;font-size:30px;color:#8fa0c4">Oxidation</span></h3><p>물질이 <b style="color:#ff6ec7">산소를 얻는</b> 반응</p></div>
+          <div class="card" id="rd"><h3 style="color:#4ce0d2">환원 <span style="font-weight:300;font-size:30px;color:#8fa0c4">Reduction</span></h3><p>물질이 <b style="color:#4ce0d2">산소를 잃는</b> 반응</p></div>
+          <div id="atom" data-layout-allow-overlap>O</div>
+          <div id="arrow" data-layout-allow-overlap><svg viewBox="0 0 520 60"><path d="M500 30 L30 30" /><polygon points="40,14 8,30 40,46" /></svg></div>
+          <div id="sim">산화와 환원은 항상 <u>동시에</u> 일어난다<small>한 물질이 산소를 잃으면(환원), 다른 물질이 그 산소를 얻는다(산화) — 동시성</small></div>
+
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#body", {x:150, opacity:0}, {x:0, opacity:1, duration:0.55, ease:"power3.out"}, 0);
+          tl.fromTo("#head", {opacity:0, y:30}, {opacity:1, y:0, duration:0.7, ease:"power3.out"}, 0.4);
+          tl.fromTo("#ox", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 1.4);
+          tl.fromTo("#rd", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 3.2);
+          tl.fromTo("#atom", {opacity:0, y:0}, {opacity:1, y:0, duration:0.4, ease:"back.out(1.4)"}, 12.239999999999998);
+          tl.to("#arrow", {opacity:1, duration:0.2}, 12.639999999999999);
+          tl.to("#arrow path", {strokeDashoffset: 0, duration: 1.2, ease:"power2.inOut"}, 12.639999999999999);
+          tl.to("#atom", {x: -880, duration: 1.6, ease:"power2.inOut"}, 12.84);
+          tl.fromTo("#sim", {opacity:0, y:30}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 15.239999999999998);
+          tl.to("#body", {x:-190, opacity:0, duration:0.45, ease:"power3.in"}, 27.63);
+
+          window.__timelines["s02"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

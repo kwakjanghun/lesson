@@ -1,0 +1,42 @@
+$ python "<watch 스킬 폴더>/scripts/watch.py" "C:\hyper\lesson\captures\yt\install_guide.mp4" --resolution 1280 --no-whisper
+
+[watch] working dir: C:\hyper\lesson\captures\yt\local2
+[watch] using local file…
+[watch] extracting scene-aware frames over full 115.1s (target 60, cap 100)…
+
+# watch: video report
+
+- **Source:** C:\hyper\lesson\captures\yt\install_guide.mp4
+- **Title:** install_guide.mp4
+- **Duration:** 01:55 (115.1s)
+- **Resolution:** 1920x1080 (h264)
+- **Detail:** balanced
+- **Frames:** 24 selected from 1 candidates (uniform with uniform fallback, 36 near-duplicates dropped, full range, budget 60, cap 100)
+- **Frame size:** max 1280px wide, max 1998px tall
+- **Transcript:** none available
+
+## Frames
+
+Frames live at: `C:\hyper\lesson\captures\yt\local2\frames`
+
+**Read each frame path below with the Read tool to view the image.** Frames are in chronological order; `t=MM:SS` is the absolute timestamp in the source video.
+
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0001.jpg` (t=00:00, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0002.jpg` (t=00:02, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0004.jpg` (t=00:06, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0010.jpg` (t=00:17, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0013.jpg` (t=00:23, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0016.jpg` (t=00:29, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0019.jpg` (t=00:35, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0020.jpg` (t=00:36, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0028.jpg` (t=00:52, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0029.jpg` (t=00:54, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0032.jpg` (t=00:59, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0034.jpg` (t=01:03, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0035.jpg` (t=01:05, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0038.jpg` (t=01:11, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0042.jpg` (t=01:19, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0043.jpg` (t=01:21, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0045.jpg` (t=01:24, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0049.jpg` (t=01:32, reason=uniform)
+- `C:\hyper\lesson\captures\yt\local2\frames\frame_0050.jpg` (t=01:34, reason=uniform)

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+
+        @font-face {
+          font-family: "Pretendard";
+          src: url("assets/fonts/PretendardVariable.woff2") format("woff2-variations");
+          font-weight: 45 920;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; font-family: "Pretendard", sans-serif; color: #eaf0ff; }
+        #body { position: absolute; inset: 0; }
+        #head { position: absolute; left: 0; right: 0; top: 90px; text-align: center; opacity: 0; will-change: transform; }
+        #head .badge { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 700;
+          color: #0b1026; background: #8aff80; border-radius: 999px; padding: 8px 30px; margin-bottom: 18px; }
+        #head .name { display: block; font-size: 68px; font-weight: 900; letter-spacing: -0.03em; }
+        .codebox { position: absolute; left: 120px; top: 300px; width: 1000px; border-radius: 20px;
+          border: 2px solid rgba(143,160,196,0.35); background: rgba(5,7,15,0.65); padding: 40px 0; opacity: 0; will-change: transform; }
+        .cl { display: block; font-family: "JetBrains Mono", monospace; font-size: 33px; line-height: 1.75;
+          color: #eaf0ff; padding: 2px 46px; border-left: 8px solid rgba(0,0,0,0); white-space: pre; }
+        .cl i { font-style: normal; color: #8fa0c4; }
+        .cap { position: absolute; left: 1200px; top: 340px; width: 580px; border-radius: 20px;
+          border: 2px solid rgba(138,255,128,0.5); background: rgba(138,255,128,0.06); padding: 36px 40px;
+          font-size: 40px; font-weight: 700; line-height: 1.5; letter-spacing: -0.02em; opacity: 0; will-change: transform; }
+        .cap b { font-weight: 700; color: #8aff80; }
+
+        .card { position:absolute; border-radius: 24px; border: 2px solid rgba(143,160,196,0.3);
+          background: rgba(234,240,255,0.03); padding: 34px 40px; opacity: 0; will-change: transform; }
+        .card h3 { font-size: 46px; font-weight: 900; letter-spacing:-0.03em; margin-bottom: 14px; }
+        .card p { font-size: 34px; font-weight: 300; line-height: 1.5; color:#eaf0ff; }
+        .card .eq { font-family:"JetBrains Mono", monospace; font-size: 34px; font-weight: 700; color:#eaf0ff;
+          margin: 14px 0 10px; white-space: nowrap; }
+        .card .tag { display:inline-block; font-size: 28px; font-weight: 700; border-radius: 999px; padding: 4px 18px; margin-right: 10px; margin-top: 6px; }
+        .ox { color:#0b1026; background:#ff6ec7; }
+        .rd { color:#0b1026; background:#4ce0d2; }
+        .lbl { position:absolute; font-size: 30px; font-weight: 300; color:#8fa0c4; opacity:0; }
+
+        .card { left: 160px; width: 1600px; padding: 26px 40px; }
+        #k0 { top: 290px; height: 230px; } #k1 { top: 545px; height: 180px; } #k2 { top: 750px; height: 180px; }
+        .card .eq { font-size: 32px; }
+        .ok { color:#4ce0d2; } .no { color:#ff6ec7; }
+
+      </style>
+
+      <div id="root" data-composition-id="s07" data-width="1920" data-height="1080">
+        <div id="body">
+          <div id="head">
+            <span class="badge">여러 가지 산화 환원</span>
+            <span class="name">묽은 염산 · 비금속 · 산소 이동도 전자 이동</span>
+          </div>
+          <div class="card" id="k0"><h3>① 금속 + 묽은 염산</h3><div class="eq">Mg + 2H⁺ → Mg²⁺ + H₂↑ &nbsp; <span class="tag ox">Mg 산화</span><span class="tag rd">H⁺ 환원</span></div><p>반응성 금속 &gt; 수소일 때만 반응 — <b class="ok">Mg, Zn ○</b> &nbsp; <b class="no">Cu, Ag ×</b> &nbsp;(수용액 양이온 수·금속판 질량 감소)</p></div>
+          <div class="card" id="k1"><h3>② 금속 + 비금속</h3><p>Na + Cl, &nbsp;Mg + O₂ — 금속은 전자를 잃고 <b style="color:#ff6ec7">양이온</b>, 비금속은 전자를 얻고 <b style="color:#4ce0d2">음이온</b> → 이온 결합</p></div>
+          <div class="card" id="k2"><h3>③ 산소의 이동 = 전자의 이동</h3><p>산소를 얻는 산화 = 전자를 <b style="color:#ff6ec7">잃는</b> 것 &nbsp;/&nbsp; 산소를 잃는 환원 = 전자를 <b style="color:#4ce0d2">얻는</b> 것 &nbsp;(Mg → Mg²⁺, O → O²⁻)</p></div>
+
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#body", {x:150, opacity:0}, {x:0, opacity:1, duration:0.55, ease:"power3.out"}, 0);
+          tl.fromTo("#head", {opacity:0, y:30}, {opacity:1, y:0, duration:0.7, ease:"power3.out"}, 0.4);
+          tl.fromTo("#k0", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 1.2);
+          tl.fromTo("#k1", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 27.310000000000002);
+          tl.to("#k0", {opacity:0.6, duration:0.4}, 27.310000000000002);
+          tl.fromTo("#k2", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 43.81);
+          tl.to("#k1", {opacity:0.6, duration:0.4}, 43.81);
+          tl.to("#body", {x:-190, opacity:0, duration:0.45, ease:"power3.in"}, 62.15);
+
+          window.__timelines["s07"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

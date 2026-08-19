@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+
+        @font-face {
+          font-family: "Pretendard";
+          src: url("assets/fonts/PretendardVariable.woff2") format("woff2-variations");
+          font-weight: 45 920;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; font-family: "Pretendard", sans-serif; color: #eaf0ff; }
+        #body { position: absolute; inset: 0; }
+        #head { position: absolute; left: 0; right: 0; top: 90px; text-align: center; opacity: 0; will-change: transform; }
+        #head .badge { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 700;
+          color: #0b1026; background: #d4af37; border-radius: 999px; padding: 8px 30px; margin-bottom: 18px; }
+        #head .name { display: block; font-size: 68px; font-weight: 900; letter-spacing: -0.03em; }
+        .codebox { position: absolute; left: 120px; top: 300px; width: 1000px; border-radius: 20px;
+          border: 2px solid rgba(143,160,196,0.35); background: rgba(5,7,15,0.65); padding: 40px 0; opacity: 0; will-change: transform; }
+        .cl { display: block; font-family: "JetBrains Mono", monospace; font-size: 33px; line-height: 1.75;
+          color: #eaf0ff; padding: 2px 46px; border-left: 8px solid rgba(0,0,0,0); white-space: pre; }
+        .cl i { font-style: normal; color: #8fa0c4; }
+        .cap { position: absolute; left: 1200px; top: 340px; width: 580px; border-radius: 20px;
+          border: 2px solid rgba(212,175,55,0.5); background: rgba(212,175,55,0.06); padding: 36px 40px;
+          font-size: 40px; font-weight: 700; line-height: 1.5; letter-spacing: -0.02em; opacity: 0; will-change: transform; }
+        .cap b { font-weight: 700; color: #d4af37; }
+
+        .card { position:absolute; border-radius: 24px; border: 2px solid rgba(143,160,196,0.3);
+          background: rgba(234,240,255,0.03); padding: 34px 40px; opacity: 0; will-change: transform; }
+        .card h3 { font-size: 46px; font-weight: 900; letter-spacing:-0.03em; margin-bottom: 14px; }
+        .card p { font-size: 34px; font-weight: 300; line-height: 1.5; color:#eaf0ff; }
+        .card .eq { font-family:"JetBrains Mono", monospace; font-size: 34px; font-weight: 700; color:#eaf0ff;
+          margin: 14px 0 10px; white-space: nowrap; }
+        .card .tag { display:inline-block; font-size: 28px; font-weight: 700; border-radius: 999px; padding: 4px 18px; margin-right: 10px; margin-top: 6px; }
+        .ox { color:#0b1026; background:#ff6ec7; }
+        .rd { color:#0b1026; background:#4ce0d2; }
+        .lbl { position:absolute; font-size: 30px; font-weight: 300; color:#8fa0c4; opacity:0; }
+
+        .g { width: 500px; height: 250px; padding: 28px 34px; }
+        .g h3 { font-size: 40px; }
+        .g p { font-size: 29px; }
+        #g0 { left: 160px; top: 300px; } #g1 { left: 710px; top: 300px; } #g2 { left: 1260px; top: 300px; }
+        #g3 { left: 160px; top: 600px; } #g4 { left: 710px; top: 600px; } #g5 { left: 1260px; top: 600px; }
+
+      </style>
+
+      <div id="root" data-composition-id="s08" data-width="1920" data-height="1080">
+        <div id="body">
+          <div id="head">
+            <span class="badge">일상생활 속</span>
+            <span class="name">우리 곁의 산화 환원 반응</span>
+          </div>
+          <div class="card g" id="g0"><h3 style="color:#d4af37">사과의 갈변</h3><p>깎은 부분이 공기 중에서 산화되어 갈색으로</p></div>
+          <div class="card g" id="g1"><h3 style="color:#d4af37">반딧불이의 빛</h3><p>몸속 루시페린이 산화될 때 불빛</p></div>
+          <div class="card g" id="g2"><h3 style="color:#d4af37">일회용 손난로</h3><p>철가루가 산화되며 열 발생</p></div>
+          <div class="card g" id="g3"><h3 style="color:#d4af37">불꽃놀이</h3><p>화약이 산화되며 높은 열 → 금속 불꽃색</p></div>
+          <div class="card g" id="g4"><h3 style="color:#d4af37">머리카락 염색</h3><p>과산화 수소가 멜라닌 색소를 산화(탈색)</p></div>
+          <div class="card g" id="g5"><h3 style="color:#d4af37">섬유 표백</h3><p>표백제의 산화 환원 반응으로 옷이 하얗게</p></div>
+
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#body", {x:150, opacity:0}, {x:0, opacity:1, duration:0.55, ease:"power3.out"}, 0);
+          tl.fromTo("#head", {opacity:0, y:30}, {opacity:1, y:0, duration:0.7, ease:"power3.out"}, 0.4);
+          tl.fromTo("#g0", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 3.1);
+          tl.fromTo("#g1", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 6.300000000000001);
+          tl.fromTo("#g2", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 9.5);
+          tl.fromTo("#g3", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 16.56);
+          tl.fromTo("#g4", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 19.959999999999997);
+          tl.fromTo("#g5", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 23.36);
+          tl.to("#body", {x:-190, opacity:0, duration:0.45, ease:"power3.in"}, 30.27);
+
+          window.__timelines["s08"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

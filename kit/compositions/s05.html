@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+
+        @font-face {
+          font-family: "Pretendard";
+          src: url("assets/fonts/PretendardVariable.woff2") format("woff2-variations");
+          font-weight: 45 920;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; font-family: "Pretendard", sans-serif; color: #eaf0ff; }
+        #body { position: absolute; inset: 0; }
+        #head { position: absolute; left: 0; right: 0; top: 90px; text-align: center; opacity: 0; will-change: transform; }
+        #head .badge { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 700;
+          color: #0b1026; background: #ff6ec7; border-radius: 999px; padding: 8px 30px; margin-bottom: 18px; }
+        #head .name { display: block; font-size: 68px; font-weight: 900; letter-spacing: -0.03em; }
+        .codebox { position: absolute; left: 120px; top: 300px; width: 1000px; border-radius: 20px;
+          border: 2px solid rgba(143,160,196,0.35); background: rgba(5,7,15,0.65); padding: 40px 0; opacity: 0; will-change: transform; }
+        .cl { display: block; font-family: "JetBrains Mono", monospace; font-size: 33px; line-height: 1.75;
+          color: #eaf0ff; padding: 2px 46px; border-left: 8px solid rgba(0,0,0,0); white-space: pre; }
+        .cl i { font-style: normal; color: #8fa0c4; }
+        .cap { position: absolute; left: 1200px; top: 340px; width: 580px; border-radius: 20px;
+          border: 2px solid rgba(255,110,199,0.5); background: rgba(255,110,199,0.06); padding: 36px 40px;
+          font-size: 40px; font-weight: 700; line-height: 1.5; letter-spacing: -0.02em; opacity: 0; will-change: transform; }
+        .cap b { font-weight: 700; color: #ff6ec7; }
+
+        .card { position:absolute; border-radius: 24px; border: 2px solid rgba(143,160,196,0.3);
+          background: rgba(234,240,255,0.03); padding: 34px 40px; opacity: 0; will-change: transform; }
+        .card h3 { font-size: 46px; font-weight: 900; letter-spacing:-0.03em; margin-bottom: 14px; }
+        .card p { font-size: 34px; font-weight: 300; line-height: 1.5; color:#eaf0ff; }
+        .card .eq { font-family:"JetBrains Mono", monospace; font-size: 34px; font-weight: 700; color:#eaf0ff;
+          margin: 14px 0 10px; white-space: nowrap; }
+        .card .tag { display:inline-block; font-size: 28px; font-weight: 700; border-radius: 999px; padding: 4px 18px; margin-right: 10px; margin-top: 6px; }
+        .ox { color:#0b1026; background:#ff6ec7; }
+        .rd { color:#0b1026; background:#4ce0d2; }
+        .lbl { position:absolute; font-size: 30px; font-weight: 300; color:#8fa0c4; opacity:0; }
+
+        #d0 { left: 160px; top: 300px; width: 700px; height: 220px; }
+        #d1 { left: 1060px; top: 300px; width: 700px; height: 220px; }
+        #stage { position:absolute; left: 0; right:0; top: 580px; height: 360px; opacity:0; }
+        .atom { position:absolute; top: 40px; width: 220px; height: 220px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-direction:column; font-weight:900; font-size: 64px; letter-spacing:-0.03em; will-change: transform; }
+        .atom small { font-size: 30px; font-weight: 300; margin-top: 6px; }
+        #zn { left: 420px; background: rgba(255,110,199,0.15); border: 4px solid #ff6ec7; color:#ff6ec7; }
+        #cu { left: 1280px; background: rgba(76,224,210,0.15); border: 4px solid #4ce0d2; color:#4ce0d2; }
+        .e { position:absolute; top: 120px; width: 54px; height: 54px; border-radius:50%; background:#d4af37; color:#0b1026; font-weight:900; font-size: 28px; display:flex; align-items:center; justify-content:center; opacity:0; will-change: transform; }
+        #e1 { left: 640px; } #e2 { left: 640px; top: 190px; }
+        #eq { position:absolute; left:0; right:0; top: 300px; text-align:center; font-family:"JetBrains Mono", monospace; font-size: 38px; font-weight:700; color:#eaf0ff; opacity:0; }
+        #eq span { margin: 0 40px; }
+        #same { position:absolute; left:0; right:0; top: 830px; text-align:center; font-size: 44px; font-weight: 700; color:#d4af37; opacity:0; }
+
+      </style>
+
+      <div id="root" data-composition-id="s05" data-width="1920" data-height="1080">
+        <div id="body">
+          <div id="head">
+            <span class="badge">전자의 이동</span>
+            <span class="name">전자로 다시 정의하는 산화와 환원</span>
+          </div>
+          <div class="card" id="d0"><h3 style="color:#ff6ec7">산화</h3><p>물질이 <b style="color:#ff6ec7">전자를 잃는</b> 반응</p></div>
+          <div class="card" id="d1"><h3 style="color:#4ce0d2">환원</h3><p>물질이 <b style="color:#4ce0d2">전자를 얻는</b> 반응</p></div>
+          <div id="stage">
+            <div class="atom" id="zn">Zn<small>아연</small></div>
+            <div class="atom" id="cu">Cu²⁺<small>구리 이온</small></div>
+            <div class="e" id="e1" data-layout-allow-overlap>e⁻</div><div class="e" id="e2" data-layout-allow-overlap>e⁻</div>
+            <div id="eq"><span style="color:#ff6ec7">Zn → Zn²⁺ + 2e⁻</span><span style="color:#4ce0d2">Cu²⁺ + 2e⁻ → Cu</span></div>
+          </div>
+          <div id="same">잃은 전자 수 = 얻은 전자 수 (2개 = 2개)</div>
+
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          window.__timelines = window.__timelines || {};
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#body", {x:150, opacity:0}, {x:0, opacity:1, duration:0.55, ease:"power3.out"}, 0);
+          tl.fromTo("#head", {opacity:0, y:30}, {opacity:1, y:0, duration:0.7, ease:"power3.out"}, 0.4);
+          tl.fromTo("#d0", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 1.2);
+          tl.fromTo("#d1", {opacity:0, y:36}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 3.2);
+          tl.fromTo("#stage", {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 17.11);
+          tl.set("#e1, #e2", {opacity:0}, 0);
+          tl.fromTo("#e1", {opacity:1, x:0}, {opacity:1, x: 640, duration:1.4, ease:"power2.inOut", immediateRender:false}, 19.81);
+          tl.fromTo("#e2", {opacity:1, x:0}, {opacity:1, x: 640, duration:1.4, ease:"power2.inOut", immediateRender:false}, 20.209999999999997);
+          tl.to("#zn", {scale:0.88, duration:0.6}, 20.41);
+          tl.to("#cu", {scale:1.1, duration:0.6}, 21.009999999999998);
+          tl.fromTo("#eq", {opacity:0, y:16}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 21.81);
+          tl.fromTo("#same", {opacity:0, y:16}, {opacity:1, y:0, duration:0.6, ease:"back.out(1.4)"}, 25.31);
+          tl.to("#body", {x:-190, opacity:0, duration:0.45, ease:"power3.in"}, 31.46);
+
+          window.__timelines["s05"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

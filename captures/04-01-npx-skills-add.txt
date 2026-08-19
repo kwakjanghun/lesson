@@ -1,0 +1,215 @@
+PS C:\hyper\demo-hf> npx skills add heygen-com/hyperframes --agent claude-code -y --copy
+
+│
+●   claude-code_2-1-229_agent  Agent detected — installing non-interactively
+[?25l│
+◇  Source: https://github.com/heygen-com/hyperframes.git
+[?25h[?25l│
+◒  Fetching skills…[1G[J◐  Fetching skills…[1G[J◓  Fetching skills…[1G[J◑  Fetching skills…[1G[J◒  Fetching skills…[1G[J◐  Fetching skills…[1G[J◓  Fetching skills…[1G[J◑  Fetching skills…[1G[J◒  Fetching skills….[1G[J◐  Fetching skills….[1G[J◓  Fetching skills….[1G[J◑  Fetching skills….[1G[J◒  Fetching skills….[1G[J◐  Fetching skills….[1G[J◓  Fetching skills….[1G[J◑  Fetching skills….[1G[J◒  Fetching skills…..[1G[J◐  Fetching skills…..[1G[J◓  Fetching skills…..[1G[J◑  Fetching skills…..[1G[J◒  Fetching skills…..[1G[J◐  Fetching skills…..[1G[J◓  Fetching skills…..[1G[J◑  Fetching skills…..[1G[J◒  Fetching skills…...[1G[J◐  Fetching skills…...[1G[J◓  Fetching skills…...[1G[J◇  Found 32 skills
+[?25h│
+●  Installing all 32 skills
+
+│
+◇  Installation Summary ─────────────────────╮
+│                                            │
+│  .\.agents\skills\embedded-captions        │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\faceless-explainer       │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\figma                    │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\general-video            │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\hyperframes-animation    │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\hyperframes-audio        │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\hyperframes-cli          │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\hyperframes-core         │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\hyperframes-creative     │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\hyperframes-keyframes    │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\hyperframes-registry     │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\hyperframes              │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\media-use                │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\motion-graphics          │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\music-to-video           │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\pr-to-video              │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\product-launch-video     │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\remotion-to-hyperframes  │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\slideshow                │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\talking-head-recut       │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\captions-overlay         │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\changelog-video          │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\cut-the-curve            │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\motion-doctrine          │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\oversized-cursor         │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\seam-craft               │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\captions-overlay         │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\changelog-video          │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\cut-the-curve            │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\motion-doctrine          │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\oversized-cursor         │
+│    copy → Claude Code                      │
+│                                            │
+│  .\.agents\skills\seam-craft               │
+│    copy → Claude Code                      │
+│                                            │
+├────────────────────────────────────────────╯
+│
+◇  Security Risk Assessments ──────────────────────────────────────────────────╮
+│                                                                              │
+│                           Gen               Socket            Snyk           │
+│  embedded-captions        Med Risk          2 alerts          Med Risk       │
+│  faceless-explainer       Safe              1 alert           Med Risk       │
+│  figma                    Safe              1 alert           Low Risk       │
+│  general-video            Safe              0 alerts          High Risk      │
+│  hyperframes-animation    Med Risk          0 alerts          Med Risk       │
+│  hyperframes-audio        Safe              1 alert           Med Risk       │
+│  hyperframes-cli          Safe              0 alerts          Low Risk       │
+│  hyperframes-core         Safe              0 alerts          Med Risk       │
+│  hyperframes-creative     Med Risk          0 alerts          Low Risk       │
+│  hyperframes-keyframes    Safe              0 alerts          Low Risk       │
+│  hyperframes-registry     Safe              0 alerts          Med Risk       │
+│  hyperframes              Safe              0 alerts          Med Risk       │
+│  media-use                Safe              4 alerts          Critical Risk  │
+│  motion-graphics          High Risk         1 alert           Med Risk       │
+│  music-to-video           Safe              0 alerts          Med Risk       │
+│  pr-to-video              Safe              1 alert           Med Risk       │
+│  product-launch-video     Safe              1 alert           High Risk      │
+│  remotion-to-hyperframes  Safe              1 alert           Low Risk       │
+│  slideshow                Med Risk          0 alerts          Med Risk       │
+│  talking-head-recut       High Risk         1 alert           Low Risk       │
+│  captions-overlay         Safe              0 alerts          Low Risk       │
+│  changelog-video          Safe              0 alerts          Med Risk       │
+│  cut-the-curve            Safe              0 alerts          Low Risk       │
+│  motion-doctrine          Med Risk          1 alert           Low Risk       │
+│  oversized-cursor         Safe              0 alerts          Low Risk       │
+│  seam-craft               Safe              0 alerts          Low Risk       │
+│  captions-overlay         Safe              0 alerts          Low Risk       │
+│  changelog-video          Safe              0 alerts          Med Risk       │
+│  cut-the-curve            Safe              0 alerts          Low Risk       │
+│  motion-doctrine          Med Risk          1 alert           Low Risk       │
+│  oversized-cursor         Safe              0 alerts          Low Risk       │
+│  seam-craft               Safe              0 alerts          Low Risk       │
+│                                                                              │
+│  Details: https://skills.sh/heygen-com/hyperframes                           │
+│                                                                              │
+├──────────────────────────────────────────────────────────────────────────────╯
+[?25l│
+[1G[J◒  Installing skills…[1G[J◐  Installing skills…[1G[J◓  Installing skills…[1G[J◑  Installing skills…[1G[J◒  Installing skills…[1G[J◐  Installing skills…[1G[J◓  Installing skills…[1G[J◑  Installing skills…[1G[J◒  Installing skills….[1G[J◐  Installing skills….[1G[J◓  Installing skills….[1G[J◇  Installation complete
+[?25h
+│
+◇  Installed 26 skills ──────────────────────────╮
+│                                                │
+│  ✓ embedded-captions (copied)                  │
+│    → .\.claude\skills\embedded-captions        │
+│  ✓ faceless-explainer (copied)                 │
+│    → .\.claude\skills\faceless-explainer       │
+│  ✓ figma (copied)                              │
+│    → .\.claude\skills\figma                    │
+│  ✓ general-video (copied)                      │
+│    → .\.claude\skills\general-video            │
+│  ✓ hyperframes-animation (copied)              │
+│    → .\.claude\skills\hyperframes-animation    │
+│  ✓ hyperframes-audio (copied)                  │
+│    → .\.claude\skills\hyperframes-audio        │
+│  ✓ hyperframes-cli (copied)                    │
+│    → .\.claude\skills\hyperframes-cli          │
+│  ✓ hyperframes-core (copied)                   │
+│    → .\.claude\skills\hyperframes-core         │
+│  ✓ hyperframes-creative (copied)               │
+│    → .\.claude\skills\hyperframes-creative     │
+│  ✓ hyperframes-keyframes (copied)              │
+│    → .\.claude\skills\hyperframes-keyframes    │
+│  ✓ hyperframes-registry (copied)               │
+│    → .\.claude\skills\hyperframes-registry     │
+│  ✓ hyperframes (copied)                        │
+│    → .\.claude\skills\hyperframes              │
+│  ✓ media-use (copied)                          │
+│    → .\.claude\skills\media-use                │
+│  ✓ motion-graphics (copied)                    │
+│    → .\.claude\skills\motion-graphics          │
+│  ✓ music-to-video (copied)                     │
+│    → .\.claude\skills\music-to-video           │
+│  ✓ pr-to-video (copied)                        │
+│    → .\.claude\skills\pr-to-video              │
+│  ✓ product-launch-video (copied)               │
+│    → .\.claude\skills\product-launch-video     │
+│  ✓ remotion-to-hyperframes (copied)            │
+│    → .\.claude\skills\remotion-to-hyperframes  │
+│  ✓ slideshow (copied)                          │
+│    → .\.claude\skills\slideshow                │
+│  ✓ talking-head-recut (copied)                 │
+│    → .\.claude\skills\talking-head-recut       │
+│  ✓ captions-overlay (copied)                   │
+│    → .\.claude\skills\captions-overlay         │
+│  ✓ changelog-video (copied)                    │
+│    → .\.claude\skills\changelog-video          │
+│  ✓ cut-the-curve (copied)                      │
+│    → .\.claude\skills\cut-the-curve            │
+│  ✓ motion-doctrine (copied)                    │
+│    → .\.claude\skills\motion-doctrine          │
+│  ✓ oversized-cursor (copied)                   │
+│    → .\.claude\skills\oversized-cursor         │
+│  ✓ seam-craft (copied)                         │
+│    → .\.claude\skills\seam-craft               │
+│                                                │
+├────────────────────────────────────────────────╯
+
+│
+└  Done!  Review skills before use; they run with full agent permissions.
+
