@@ -1,0 +1,5 @@
+v24.14.0
+11.9.0
+Python 3.11.9
+ffmpeg version 8.1.2-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers
+2.1.220 (Claude Code)
